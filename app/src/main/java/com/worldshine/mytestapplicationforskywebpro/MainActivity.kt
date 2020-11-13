@@ -1,15 +1,24 @@
 package com.worldshine.mytestapplicationforskywebpro
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.worldshine.mytestapplicationforskywebpro.data.PicturesDataSource
 import com.worldshine.mytestapplicationforskywebpro.databinding.ActivityMainBinding
+import com.worldshine.mytestapplicationforskywebpro.network.Connection
+import com.worldshine.mytestapplicationforskywebpro.network.Rest
 import com.worldshine.mytestapplicationforskywebpro.utils.setupWithNavController
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
+    private val TAG = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +26,28 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setNavigationBar()
+
+
+        testFun()
+    }
+
+
+
+    private fun testFun() {
+/*        val retrofit = Connection.create
+        retrofit.getPictures(1)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onError = {
+                    Log.d(TAG, "Error: ${it.localizedMessage}")
+                },
+                onSuccess = {
+                    Log.d(TAG, "Completed: ${it.joinToString()}")
+                }
+            )*/
+
+
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
