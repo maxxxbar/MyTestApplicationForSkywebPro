@@ -9,9 +9,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.worldshine.mytestapplicationforskywebpro.adapters.LoadStateAdapter
 import com.worldshine.mytestapplicationforskywebpro.adapters.PicturesAdapter
-import com.worldshine.mytestapplicationforskywebpro.data.PicturesRepository
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentPicturesBinding
-import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -33,7 +31,6 @@ class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
         recyclerView = binding.rvPictures
         recyclerView.adapter = adapter
         initAdapter()
-        qwe()
         return binding.root
     }
 
@@ -43,16 +40,8 @@ class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
     }
 
     override fun initAdapter() {
-       /* presenter.getPictures().observe(viewLifecycleOwner) {
-            adapter.submitData(lifecycle, it)
-        }*/
-
-    }
-
-    fun qwe() {
         binding.retryButton.setOnClickListener { adapter.retry() }
-        val picturesRepository = PicturesRepository(Connection.create)
-        picturesRepository.getResultAsLiveData().observe(viewLifecycleOwner) {
+        presenter.getPictures().observe(viewLifecycleOwner) {
             adapter.submitData(lifecycle, it)
         }
         recyclerView.adapter = adapter.withLoadStateFooter(
@@ -63,4 +52,5 @@ class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
             binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
+
 }

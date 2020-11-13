@@ -19,13 +19,7 @@ class AuthorizationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(AuthorizationViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_authorization, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
-        })
         return root
     }
 }

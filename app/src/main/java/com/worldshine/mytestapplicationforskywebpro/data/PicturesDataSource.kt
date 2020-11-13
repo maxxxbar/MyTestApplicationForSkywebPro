@@ -13,10 +13,10 @@ class PicturesDataSource(
         val page = params.key ?: 1
         return try {
             val response = rest.getPictures(page)
-            val q = response.body()
+            val responseBody = response.body()
             val list = mutableListOf<PicturesResponse>()
-            if (q != null) {
-                list.addAll(q)
+            if (responseBody != null) {
+                list.addAll(responseBody)
             }
             LoadResult.Page(
                 data = list,
