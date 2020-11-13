@@ -9,10 +9,12 @@ import com.worldshine.mytestapplicationforskywebpro.model.PicturesResponse
 import com.worldshine.mytestapplicationforskywebpro.network.Rest
 
 class PicturesRepository(private val rest: Rest) {
+    private val pagingSourceFactory = { PicturesDataSource(rest) }
+    private val config = PagingConfig(pageSize = 20)
     fun getResultAsLiveData(): LiveData<PagingData<PicturesResponse>> {
         return Pager(
-            config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { PicturesDataSource(rest) }
+            config = config,
+            pagingSourceFactory = pagingSourceFactory
         ).liveData
     }
 }
