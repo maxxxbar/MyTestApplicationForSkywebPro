@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.worldshine.mytestapplicationforskywebpro.data.PicturesDataSource
+import com.worldshine.mytestapplicationforskywebpro.data.PicturesRepository
 import com.worldshine.mytestapplicationforskywebpro.databinding.ActivityMainBinding
 import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import com.worldshine.mytestapplicationforskywebpro.network.Rest
@@ -47,7 +48,10 @@ class MainActivity : AppCompatActivity() {
                 }
             )*/
 
+    val picturesRepository = PicturesRepository(Connection.create)
+        picturesRepository.getResultAsLiveData().observe(this) {
 
+        }
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {

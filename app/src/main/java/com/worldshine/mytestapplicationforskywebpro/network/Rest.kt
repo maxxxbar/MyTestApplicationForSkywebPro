@@ -6,7 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Rest {
-
     @GET("/v2/list")
-    fun getPictures(@Query(value = "page") page: Int): Response<List<PicturesResponse>>
+    suspend fun getPictures(@Query(value = "page") page: Int): Response<List<PicturesResponse>>
 }
