@@ -8,7 +8,7 @@ import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import moxy.MvpPresenter
 
 class PicturesFragmentPresenter() : MvpPresenter<PicturesFragmentView>() {
-    private val rest = Connection.create
+    private val rest = Connection.getPicturesWithRetrofit()
     private val picturesRepository = PicturesRepository(rest)
     fun getPictures(): LiveData<PagingData<PicturesResponse>> {
         return picturesRepository.getResultAsLiveData()

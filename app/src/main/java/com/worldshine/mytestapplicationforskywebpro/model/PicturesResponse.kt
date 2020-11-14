@@ -3,10 +3,10 @@ package com.worldshine.mytestapplicationforskywebpro.model
 import com.google.gson.annotations.SerializedName
 
 data class PicturesResponse(
-    @SerializedName("id") val id: Int,
-    @SerializedName("author") val author: String,
-    @SerializedName("width") val width: Int,
-    @SerializedName("height") val height: Int,
-    @SerializedName("url") val url: String,
-    @SerializedName("download_url") val download_url: String
+    @field:SerializedName("id") val id: Int,
+    @field:SerializedName("author") val author: String,
+    @field:SerializedName("width") val width: Int,
+    @field:SerializedName("height") val height: Int,
+    @field:SerializedName("url") val url: String,
+    @field:SerializedName("download_url") val download_url: String
 )

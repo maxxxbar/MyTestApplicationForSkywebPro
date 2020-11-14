@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 }
             )*/
 
-    val picturesRepository = PicturesRepository(Connection.create)
+    val picturesRepository = PicturesRepository(Connection.getPicturesWithRetrofit())
         picturesRepository.getResultAsLiveData().observe(this) {
 
         }

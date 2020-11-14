@@ -3,15 +3,19 @@ package com.worldshine.mytestapplicationforskywebpro.ui.authorization
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentAuthorizationBinding
+import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidEmail
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidPassword
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import moxy.MvpAppCompatFragment
 import java.util.*
 
@@ -57,7 +61,8 @@ class AuthorizationFragment : MvpAppCompatFragment() {
                         getString(R.string.password_error)
                 }
             } else if (email.isNotEmpty() && password.isNotEmpty() && email.isValidEmail() && password.isValidPassword()) {
-                Toast.makeText(requireContext(), "Хорошо", Toast.LENGTH_SHORT).show()
+
+
             }
         }
     }
