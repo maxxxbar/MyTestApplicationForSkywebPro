@@ -17,5 +17,7 @@
     <string name="tf_password_hint">Пароль</string>
     <string name="activity_main_buttonDo_text">Войти</string>
     <string name="logo_description">Logo</string>
+    <string name="error_msg_title">Timeout</string>
+    <string name="iv_pictures_description">Picture description</string>
 
 </resources>

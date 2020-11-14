@@ -5,10 +5,9 @@
     android:id="@+id/cv_pictures"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:elevation="5dp"
-    app:cardElevation="10dp">
-
+    android:layout_margin="@dimen/cv_pictures_all_margin"
+    android:elevation="@dimen/cv_pictures_elevation"
+    app:cardElevation="@dimen/cv_pictures_card_eleavtion">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,10 +17,11 @@
         <ImageView
             android:id="@+id/iv_pictures"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/iv_pictures_layout_height"
             android:layout_gravity="center"
             android:layout_weight="1"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/iv_pictures_description" />
 
         <TextView
             android:id="@+id/tv_pictures"
@@ -29,6 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="TextView" />
+            tools:text="Author" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

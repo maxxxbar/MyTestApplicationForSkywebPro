@@ -16,8 +16,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:expandedTitleMarginStart="0dp">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -27,13 +26,12 @@
                     android:id="@+id/tv_title_pictures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="sans-serif"
+                    android:layout_marginStart="@dimen/tv_title_pictures_layout_marginStart"
+                    android:layout_marginTop="@dimen/tv_title_pictures_layout_marginTop"
+                    android:layout_marginBottom="@dimen/tv_title_pictures_marginEnd"
                     android:text="@string/appbar_title_pictures"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/tv_title_pictures_textSize"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +48,6 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ab_pictures"
         tools:listitem="@layout/pictures_item" />
@@ -71,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/retry"
-        app:backgroundTint="#FF0000"
+        app:backgroundTint="@color/btn_retry_backgroundTint_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

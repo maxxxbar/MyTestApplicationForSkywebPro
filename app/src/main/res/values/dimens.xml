@@ -16,4 +16,15 @@
     <dimen name="btn_do_layout_marginStart">32dp</dimen>
     <dimen name="btn_do_marginEnd">32dp</dimen>
 
+    <dimen name="tv_title_pictures_layout_marginTop">20dp</dimen>
+    <dimen name="tv_title_pictures_layout_marginStart">20dp</dimen>
+    <dimen name="tv_title_pictures_marginEnd">20dp</dimen>
+    <dimen name="tv_title_pictures_textSize">20sp</dimen>
+
+    <dimen name="error_msg_textSize">24sp</dimen>
+    <dimen name="iv_pictures_layout_height">200dp</dimen>
+    <dimen name="cv_pictures_all_margin">10dp</dimen>
+    <dimen name="cv_pictures_elevation">5dp</dimen>
+    <dimen name="cv_pictures_card_eleavtion">10dp</dimen>
+
 </resources>

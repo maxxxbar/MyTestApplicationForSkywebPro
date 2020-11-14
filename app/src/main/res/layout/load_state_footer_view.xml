@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:textSize="24sp"
-        tools:text="Timeout" />
+        android:textSize="@dimen/error_msg_textSize"
+        tools:text="@string/error_msg_title" />
 
     <ProgressBar
         android:id="@+id/pb_pictures"
@@ -30,5 +30,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/retry"
-        app:backgroundTint="#FF0000" />
+        app:backgroundTint="@color/btn_retry_backgroundTint_color" />
 </LinearLayout>
