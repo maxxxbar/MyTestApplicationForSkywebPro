@@ -10,17 +10,24 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentAuthorizationBinding
+import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerPresentersComponent
 import com.worldshine.mytestapplicationforskywebpro.utils.createSnackbar
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidEmail
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidPassword
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import java.util.*
+import javax.inject.Inject
 
 class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationFragmentView {
     private var _binding: FragmentAuthorizationBinding? = null
     private val binding get() = _binding!!
-    private val presenter: AuthorizationFragmentPresenter by moxyPresenter { AuthorizationFragmentPresenter() }
+
+    @Inject
+    lateinit var presenterProvider: AuthorizationFragmentPresenter
+    private val presenter: AuthorizationFragmentPresenter by moxyPresenter {
+        DaggerPresentersComponent.create().getAuthorizationFragmentPresenter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

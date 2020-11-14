@@ -5,8 +5,10 @@ import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import moxy.InjectViewState
 import moxy.MvpPresenter
 
+@InjectViewState
 class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>() {
     companion object {
         private const val WEATHER_BASE_URL = "https://api.openweathermap.org/"

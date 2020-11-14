@@ -3,7 +3,6 @@ package com.worldshine.mytestapplicationforskywebpro.utils
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.ColorInt
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.worldshine.mytestapplicationforskywebpro.R

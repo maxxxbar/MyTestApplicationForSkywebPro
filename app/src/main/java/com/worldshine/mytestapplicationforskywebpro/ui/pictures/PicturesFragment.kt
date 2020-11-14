@@ -10,15 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.worldshine.mytestapplicationforskywebpro.adapters.LoadStateAdapter
 import com.worldshine.mytestapplicationforskywebpro.adapters.PicturesAdapter
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentPicturesBinding
+import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerPresentersComponent
+import com.worldshine.mytestapplicationforskywebpro.ui.authorization.AuthorizationFragmentPresenter
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
+import javax.inject.Inject
 
 class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
 
     private var _binding: FragmentPicturesBinding? = null
     private val binding get() = _binding!!
     private val adapter = PicturesAdapter()
-    private val presenter by moxyPresenter { PicturesFragmentPresenter() }
+
+    @Inject
+    lateinit var presenterProvider: AuthorizationFragmentPresenter
+    private val presenter: PicturesFragmentPresenter by moxyPresenter {
+        DaggerPresentersComponent.create().getPicturesFragmentPresenter()
+    }
     private lateinit var recyclerView: RecyclerView
 
 
