@@ -1,5 +1,19 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="appBar_title_margin">20dp</dimen>
+    <dimen name="appBar_title_text_size">20sp</dimen>
+    <dimen name="logo_authorization_layout_height">200dp</dimen>
+    <dimen name="til_email_layout_marginTop">24dp</dimen>
+    <dimen name="til_email_layout_marginStart">32dp</dimen>
+    <dimen name="til_email_layout_marginEnd">32dp</dimen>
+    <dimen name="til_password_layout_marginTop">20dp</dimen>
+    <dimen name="til_password_layout_marginStart">32dp</dimen>
+    <dimen name="til_password_layout_marginEnd">32dp</dimen>
+    <dimen name="btn_do_layout_marginTop">24dp</dimen>
+    <dimen name="btn_do_layout_marginStart">32dp</dimen>
+    <dimen name="btn_do_marginEnd">32dp</dimen>
+
 </resources>

@@ -39,24 +39,24 @@ class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationFragmentView 
     }
 
     private fun btnOnClick() {
-        binding.buttonDo.setOnClickListener {
+        binding.btnDo.setOnClickListener {
             val email =
-                binding.activityMainTextfieldEmail.text?.trim().toString()
+                binding.tfEmail.text?.trim().toString()
                     .toLowerCase(Locale.getDefault())
-            val password = binding.activityMainTextfieldPassword.text?.trim().toString()
-            binding.activityMainTextInputLayoutEmail.error = null
-            binding.activityMainTextInputLayoutPassword.error = null
+            val password = binding.tfPassword.text?.trim().toString()
+            binding.tilEmail.error = null
+            binding.tilPassword.error = null
             if (email.isEmpty() || password.isEmpty() || !email.isValidEmail() || !password.isValidPassword()) {
                 if (email.isEmpty()) {
-                    binding.activityMainTextInputLayoutEmail.error = getString(R.string.email_empty)
+                    binding.tilEmail.error = getString(R.string.email_empty)
                 } else if (!email.isValidEmail()) {
-                    binding.activityMainTextInputLayoutEmail.error = getString(R.string.email_error)
+                    binding.tilEmail.error = getString(R.string.email_error)
                 }
                 if (password.isEmpty()) {
-                    binding.activityMainTextInputLayoutPassword.error =
+                    binding.tilPassword.error =
                         getString(R.string.password_empty)
                 } else if (!password.isValidPassword()) {
-                    binding.activityMainTextInputLayoutPassword.error =
+                    binding.tilPassword.error =
                         getString(R.string.password_error)
                 }
             } else if (email.isNotEmpty() && password.isNotEmpty() && email.isValidEmail() && password.isValidPassword()) {

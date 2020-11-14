@@ -8,13 +8,16 @@ import io.reactivex.schedulers.Schedulers
 import moxy.MvpPresenter
 
 class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>() {
+    companion object {
+        private const val WEATHER_BASE_URL = "https://api.openweathermap.org/"
+    }
 
     private val compositeDisposable = CompositeDisposable()
 
     @SuppressLint("CheckResult")
     fun getWeather() {
         val rest =
-            Connection.getWeatherWithRetrofit("https://api.openweathermap.org/")
+            Connection.getWeatherWithRetrofit(WEATHER_BASE_URL)
         rest.getWeather()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

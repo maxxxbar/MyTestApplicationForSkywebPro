@@ -14,18 +14,15 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/ab_authorization"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:expandedTitleMarginStart="0dp">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -33,13 +30,12 @@
                     android:id="@+id/tv_title_pictures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:fontFamily="sans-serif"
+                    android:layout_marginStart="@dimen/appBar_title_margin"
+                    android:layout_marginTop="@dimen/appBar_title_margin"
+                    android:layout_marginBottom="@dimen/appBar_title_margin"
                     android:text="@string/appbar_title_authorization"
-                    android:textSize="20sp"
                     android:textColor="@color/white"
+                    android:textSize="@dimen/appBar_title_text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -47,13 +43,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
+        android:id="@+id/logo_authorization"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:contentDescription="TODO"
+        android:layout_height="@dimen/logo_authorization_layout_height"
+        android:contentDescription="@string/logo_description"
         app:srcCompat="@drawable/logo" />
 
     <ProgressBar
@@ -65,56 +61,50 @@
         tools:visibility="visible" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activityMainTextInputLayoutEmail"
+        android:id="@+id/til_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp">
+        android:layout_marginStart="@dimen/til_email_layout_marginStart"
+        android:layout_marginTop="@dimen/til_email_layout_marginTop"
+        android:layout_marginEnd="@dimen/til_email_layout_marginEnd">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activityMainTextfieldEmail"
+            android:id="@+id/tf_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/activity_main_email_textfield_hint"
+            android:hint="@string/tf_email_hint"
             android:inputType="textEmailSubject" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activityMainTextInputLayoutPassword"
+        android:id="@+id/til_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        app:endIconContentDescription="Test"
+        android:layout_marginStart="@dimen/til_password_layout_marginStart"
+        android:layout_marginTop="@dimen/til_password_layout_marginTop"
+        android:layout_marginEnd="@dimen/til_password_layout_marginEnd"
         app:endIconDrawable="@android:drawable/ic_menu_info_details"
         app:endIconMode="custom"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activityMainTextfieldPassword"
+            android:id="@+id/tf_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/activity_main_password_textfield_hint"
+            android:hint="@string/tf_password_hint"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonDo"
+        android:id="@+id/btn_do"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.04"
+        android:layout_marginStart="@dimen/btn_do_layout_marginStart"
+        android:layout_marginTop="@dimen/btn_do_layout_marginTop"
+        android:layout_marginEnd="@dimen/btn_do_marginEnd"
         android:text="@string/activity_main_buttonDo_text"
-        android:textColor="#ffffff"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:cornerRadius="0dp" />
+        android:textSize="14sp" />
 
 </LinearLayout>

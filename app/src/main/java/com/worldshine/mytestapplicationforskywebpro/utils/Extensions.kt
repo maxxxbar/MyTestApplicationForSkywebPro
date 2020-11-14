@@ -2,6 +2,7 @@ package com.worldshine.mytestapplicationforskywebpro.utils
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -16,7 +17,11 @@ fun ImageView.loadImageWithGlide(imgUrl: String) {
 }
 
 fun createSnackbar(view: View, text: String, length: Int = Snackbar.LENGTH_LONG) {
-    Snackbar.make(view, text, length).show()
+    val sb = Snackbar.make(view, text, length)
+    val viewSb = sb.view
+    val tv: TextView = viewSb.findViewById(com.google.android.material.R.id.snackbar_text)
+    tv.maxLines = 10
+    sb.show()
 }
 
 fun String.isValidEmail(): Boolean {
