@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="appBar_title_margin">20dp</dimen>
+    <dimen name="appBar_title_text_size">20sp</dimen>
+    <dimen name="logo_authorization_layout_height">200dp</dimen>
+    <dimen name="til_email_layout_marginTop">24dp</dimen>
+    <dimen name="til_email_layout_marginStart">32dp</dimen>
+    <dimen name="til_email_layout_marginEnd">32dp</dimen>
+    <dimen name="til_password_layout_marginTop">20dp</dimen>
+    <dimen name="til_password_layout_marginStart">32dp</dimen>
+    <dimen name="til_password_layout_marginEnd">32dp</dimen>
+    <dimen name="btn_do_layout_marginTop">24dp</dimen>
+    <dimen name="btn_do_layout_marginStart">32dp</dimen>
+    <dimen name="btn_do_marginEnd">32dp</dimen>
+
+    <dimen name="tv_title_pictures_layout_marginTop">20dp</dimen>
+    <dimen name="tv_title_pictures_layout_marginStart">20dp</dimen>
+    <dimen name="tv_title_pictures_marginEnd">20dp</dimen>
+    <dimen name="tv_title_pictures_textSize">20sp</dimen>
+
+    <dimen name="error_msg_textSize">24sp</dimen>
+    <dimen name="iv_pictures_layout_height">200dp</dimen>
+    <dimen name="cv_pictures_all_margin">10dp</dimen>
+    <dimen name="cv_pictures_elevation">5dp</dimen>
+    <dimen name="cv_pictures_card_eleavtion">10dp</dimen>
+
+</resources>

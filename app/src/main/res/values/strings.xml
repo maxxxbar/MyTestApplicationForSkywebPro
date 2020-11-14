@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MyTestApplicationForSkywebPro</string>
+    <string name="retry">Retry</string>
+
+    <string name="password_error">Пароль должен содержать минимум 6 символов,минимум 1 строчную букву, 1 заглавную, и 1 цифру.</string>
+    <string name="password_empty">Поле пароль не должно быть пустое</string>
+    <string name="email_empty">Поле адрес электронной почты не должно быть пустое</string>
+    <string name="email_error">Адрес электронной почты указан неверно. Пример: example@example.com</string>
+    <string name="weatherShow">%1$s, температура: %2$s градусов, облачность: %3$s, влажность %4$s</string>
+    <string name="appbar_title_authorization">Авторизация</string>
+    <string name="appbar_title_pictures">Картинки</string>
+    <string name="tf_email_hint">Электронная почта</string>
+    <string name="tf_password_hint">Пароль</string>
+    <string name="activity_main_buttonDo_text">Войти</string>
+    <string name="logo_description">Logo</string>
+    <string name="error_msg_title">Timeout</string>
+    <string name="iv_pictures_description">Picture description</string>
+
 </resources>

@@ -14,6 +14,22 @@ buildscript {
     }
 }
 
+ext {
+    moxyVersion = "2.2.0"
+    daggerVersion = "2.29.1"
+    retrofitVersion = "2.9.0"
+    rxJava2Version = "2.2.19"
+    rxAndroidVersion = "2.1.1"
+    rxKotlinVersion = "2.4.0"
+    materilaDesinVersion = "1.2.1"
+    activityVersion = "1.1.0"
+    okHttp3Version = "4.8.1"
+    gsonVersion = "2.8.6"
+    retrofitRxJava2Adapter = "2.9.0"
+    glideVersion = "4.11.0"
+    paging_version = "3.0.0-alpha09"
+}
+
 allprojects {
     repositories {
         google()
