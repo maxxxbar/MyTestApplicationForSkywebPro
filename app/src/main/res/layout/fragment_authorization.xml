@@ -11,7 +11,7 @@
     android:orientation="vertical"
     android:touchscreenBlocksFocus="true"
     android:windowSoftInputMode="adjustPan"
-    tools:context=".MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab_authorization"

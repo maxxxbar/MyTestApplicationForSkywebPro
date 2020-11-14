@@ -1,16 +1,17 @@
-package com.worldshine.mytestapplicationforskywebpro
+package com.worldshine.mytestapplicationforskywebpro.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.ActivityMainBinding
+import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerActivityComponent
 import com.worldshine.mytestapplicationforskywebpro.utils.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
-    private val TAG = javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setNavigationBar()
+        injectDependency()
     }
 
 
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController?.value?.navigateUp() ?: false
+    }
+
+    private fun injectDependency() {
+        val component = DaggerActivityComponent.create()
+        component.inject(this)
     }
 
     private fun setNavigationBar() {
