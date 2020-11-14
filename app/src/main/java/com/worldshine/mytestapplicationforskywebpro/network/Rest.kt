@@ -3,7 +3,6 @@ package com.worldshine.mytestapplicationforskywebpro.network
 import com.worldshine.mytestapplicationforskywebpro.model.ForecastResponse
 import com.worldshine.mytestapplicationforskywebpro.model.PicturesResponse
 import io.reactivex.Observable
-import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
