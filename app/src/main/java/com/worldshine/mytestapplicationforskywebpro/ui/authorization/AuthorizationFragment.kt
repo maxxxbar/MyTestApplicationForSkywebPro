@@ -3,25 +3,24 @@ package com.worldshine.mytestapplicationforskywebpro.ui.authorization
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentAuthorizationBinding
-import com.worldshine.mytestapplicationforskywebpro.network.Connection
+import com.worldshine.mytestapplicationforskywebpro.utils.createSnackbar
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidEmail
 import com.worldshine.mytestapplicationforskywebpro.utils.isValidPassword
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import moxy.MvpAppCompatFragment
+import moxy.ktx.moxyPresenter
 import java.util.*
 
-class AuthorizationFragment : MvpAppCompatFragment() {
+class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationFragmentView {
     private var _binding: FragmentAuthorizationBinding? = null
     private val binding get() = _binding!!
+    private val presenter: AuthorizationFragmentPresenter by moxyPresenter { AuthorizationFragmentPresenter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,8 +60,7 @@ class AuthorizationFragment : MvpAppCompatFragment() {
                         getString(R.string.password_error)
                 }
             } else if (email.isNotEmpty() && password.isNotEmpty() && email.isValidEmail() && password.isValidPassword()) {
-
-
+                presenter.getWeather()
             }
         }
     }
@@ -83,4 +81,34 @@ class AuthorizationFragment : MvpAppCompatFragment() {
             InputMethodManager.HIDE_NOT_ALWAYS
         )
     }
+
+    override fun showSnackbars(
+        city: String,
+        weather: String,
+        clouds: String,
+        humidity: String
+    ) {
+        createSnackbar(
+            binding.root,
+            String.format(
+                getString(R.string.weatherShow),
+                city,
+                weather,
+                clouds,
+                humidity
+            )
+        )
+    }
+
+    override fun showError(error: String) {
+        createSnackbar(
+            binding.root,
+            error
+        )
+    }
+
+    override fun showProgressbar(show: Boolean) {
+        binding.pbAuthorization.isVisible = show
+    }
+
 }

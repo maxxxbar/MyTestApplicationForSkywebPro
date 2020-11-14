@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/pictureFragment"
         android:name="com.worldshine.mytestapplicationforskywebpro.ui.pictures.PicturesFragment"
-        android:label="@string/title_pictures"
+        android:label="@string/appbar_title_pictures"
         tools:layout="@layout/fragment_pictures" />
 </navigation>

@@ -1,28 +1,54 @@
 package com.worldshine.mytestapplicationforskywebpro.ui.authorization
 
-import android.util.Log
+import android.annotation.SuppressLint
 import com.worldshine.mytestapplicationforskywebpro.network.Connection
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import moxy.MvpPresenter
 
 class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>() {
 
-    private  val TAG = javaClass.simpleName
+    private val compositeDisposable = CompositeDisposable()
 
+    @SuppressLint("CheckResult")
     fun getWeather() {
         val rest =
             Connection.getWeatherWithRetrofit("https://api.openweathermap.org/")
-        rest.getWeather().subscribeOn(Schedulers.io())
+        rest.getWeather()
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = {
-                    Log.d(TAG, "Success: $it")
+            .subscribe(
+                {
+                    //onNext
+                    viewState.showSnackbars(
+                        it.name,
+                        it.main.temp.toInt().toString(),
+                        it.weather[0].description,
+                        it.main.humidity.toString()
+                    )
                 },
-                onError = {
-                    Log.d(TAG, "Error: ${it.localizedMessage}")
+                { throwable ->
+                    //OnError
+                    throwable.localizedMessage?.let {
+                        viewState.showError(it)
+                    }
+
+                },
+                {
+                    //onComplete
+                    viewState.showProgressbar(false)
+                },
+                {
+                    //onSubscribe
+                    compositeDisposable.add(it)
+                    viewState.showProgressbar(true)
                 }
             )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 }

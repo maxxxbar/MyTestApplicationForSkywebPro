@@ -40,7 +40,7 @@ class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
     }
 
     override fun initAdapter() {
-        binding.retryButton.setOnClickListener { adapter.retry() }
+        binding.btnRetry.setOnClickListener { adapter.retry() }
         presenter.getPictures().observe(viewLifecycleOwner) {
             adapter.submitData(lifecycle, it)
         }
@@ -48,8 +48,8 @@ class PicturesFragment : MvpAppCompatFragment(), PicturesFragmentView {
             footer = LoadStateAdapter { adapter.retry() }
         )
         adapter.addLoadStateListener { loadState ->
-            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+            binding.pbPictures.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.btnRetry.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
 

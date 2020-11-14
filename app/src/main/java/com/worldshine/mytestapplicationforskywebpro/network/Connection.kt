@@ -15,7 +15,6 @@ object Connection {
     private const val APP_ID_QUERY = "appid"
     private const val APP_ID_VALUE = "c35880b49ff95391b3a6d0edd0c722eb"
 
-
     private val httpLoggingInterceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     private val clientForPictures =

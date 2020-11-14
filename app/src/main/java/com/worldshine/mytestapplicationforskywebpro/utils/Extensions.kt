@@ -15,7 +15,7 @@ fun ImageView.loadImageWithGlide(imgUrl: String) {
         .into(this)
 }
 
-fun createSnackbar(view: View, text: String, length: Int = Snackbar.LENGTH_SHORT) {
+fun createSnackbar(view: View, text: String, length: Int = Snackbar.LENGTH_LONG) {
     Snackbar.make(view, text, length).show()
 }
 

@@ -2,6 +2,7 @@ package com.worldshine.mytestapplicationforskywebpro.network
 
 import com.worldshine.mytestapplicationforskywebpro.model.ForecastResponse
 import com.worldshine.mytestapplicationforskywebpro.model.PicturesResponse
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
@@ -26,5 +27,5 @@ interface Rest {
         @Query(CITY_QUERY) cityId: Int = CITY_VALUE,
         @Query(LANG_QUERY) lang: String = LANG_VALUE,
         @Query(UNITS_QUERY) units: String = UNITS_VALUE,
-    ): Single<ForecastResponse>
+    ): Observable<ForecastResponse>
 }
