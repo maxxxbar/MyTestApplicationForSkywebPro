@@ -33,9 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun injectDependency() {
-        val component = DaggerActivityComponent.create()
+        val component = DaggerActivityComponent.builder().build()
         component.inject(this)
     }
+
 
     private fun setNavigationBar() {
         val bottomNavigationBar = binding.navView

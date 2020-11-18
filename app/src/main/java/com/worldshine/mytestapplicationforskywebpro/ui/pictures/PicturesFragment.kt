@@ -11,6 +11,7 @@ import com.worldshine.mytestapplicationforskywebpro.adapters.LoadStateAdapter
 import com.worldshine.mytestapplicationforskywebpro.adapters.PicturesAdapter
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentPicturesBinding
 import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerPresentersComponent
+import com.worldshine.mytestapplicationforskywebpro.di.component.NetworkComponent
 import com.worldshine.mytestapplicationforskywebpro.ui.authorization.AuthorizationFragmentPresenter
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter

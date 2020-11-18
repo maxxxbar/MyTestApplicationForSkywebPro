@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.FragmentAuthorizationBinding
 import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerPresentersComponent
 import com.worldshine.mytestapplicationforskywebpro.utils.createSnackbar
-import com.worldshine.mytestapplicationforskywebpro.utils.isValidEmail
-import com.worldshine.mytestapplicationforskywebpro.utils.isValidPassword
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import java.util.*
@@ -35,7 +34,7 @@ class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationFragmentView 
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAuthorizationBinding.inflate(inflater, container, false)
-        setOnTouchListener()
+        setTouchListener()
         btnOnClick()
         return binding.root
     }
@@ -45,35 +44,41 @@ class AuthorizationFragment : MvpAppCompatFragment(), AuthorizationFragmentView 
         _binding = null
     }
 
-    private fun btnOnClick() {
+    override fun btnOnClick() {
         binding.btnDo.setOnClickListener {
             val email =
                 binding.tfEmail.text?.trim().toString()
                     .toLowerCase(Locale.getDefault())
             val password = binding.tfPassword.text?.trim().toString()
-            binding.tilEmail.error = null
-            binding.tilPassword.error = null
-            if (email.isEmpty() || password.isEmpty() || !email.isValidEmail() || !password.isValidPassword()) {
-                if (email.isEmpty()) {
-                    binding.tilEmail.error = getString(R.string.email_empty)
-                } else if (!email.isValidEmail()) {
-                    binding.tilEmail.error = getString(R.string.email_error)
-                }
-                if (password.isEmpty()) {
-                    binding.tilPassword.error =
-                        getString(R.string.password_empty)
-                } else if (!password.isValidPassword()) {
-                    binding.tilPassword.error =
-                        getString(R.string.password_error)
-                }
-            } else if (email.isNotEmpty() && password.isNotEmpty() && email.isValidEmail() && password.isValidPassword()) {
-                presenter.getWeather()
-            }
+            presenter.checkEmailAndPasswordOnValid(
+                email = email,
+                password = password
+            )
+        }
+        binding.tilPassword.setEndIconOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.password_error),
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
+    override fun showErrorInTextInputLayoutEmail(error: Int) {
+        binding.tilEmail.error = getString(error)
+    }
+
+    override fun showErrorInTextInputLayoutPassword(error: Int) {
+        binding.tilPassword.error = getString(error)
+    }
+
+    override fun clearErrorForEmailAndPasswordTextField() {
+        binding.tilEmail.error = null
+        binding.tilPassword.error = null
+    }
+
     @SuppressLint("ClickableViewAccessibility")
-    private fun setOnTouchListener() {
+    private fun setTouchListener() {
         binding.root.setOnTouchListener { view, _ ->
             view.performClick()
             hideKeyboard()

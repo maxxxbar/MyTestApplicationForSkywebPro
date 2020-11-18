@@ -6,10 +6,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.worldshine.mytestapplicationforskywebpro.model.PicturesResponse
-import com.worldshine.mytestapplicationforskywebpro.network.Rest
 
-class PicturesRepository(private val rest: Rest) {
-    private val pagingSourceFactory = { PicturesDataSource(rest) }
+class PicturesRepository() {
+    private val pagingSourceFactory = { PicturesDataSource() }
     private val config = PagingConfig(pageSize = 20)
     fun getResultAsLiveData(): LiveData<PagingData<PicturesResponse>> {
         return Pager(
