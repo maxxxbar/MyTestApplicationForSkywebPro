@@ -1,27 +1,17 @@
 package com.worldshine.mytestapplicationforskywebpro.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.databinding.ActivityMainBinding
 import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerActivityComponent
-import com.worldshine.mytestapplicationforskywebpro.di.module.NetworkModule
-import com.worldshine.mytestapplicationforskywebpro.network.Rest
 import com.worldshine.mytestapplicationforskywebpro.utils.setupWithNavController
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
-    @Inject
-    lateinit var rest: Rest
-    private var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         setNavigationBar()
         injectDependency()
-
     }
 
 
@@ -44,20 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun injectDependency() {
-        val component =
-            DaggerActivityComponent.builder().networkModule(NetworkModule("https://picsum.photos"))
-                .build()
+        val component = DaggerActivityComponent.builder().build()
         component.inject(this)
-        job?.cancel()
-        job = lifecycleScope.launch {
-            q()
-        }
     }
 
-    suspend fun q() {
-        val s = rest.getPictures(1).body()
-        Log.d("QWEQWE", s!!.joinToString())
-    }
 
     private fun setNavigationBar() {
         val bottomNavigationBar = binding.navView

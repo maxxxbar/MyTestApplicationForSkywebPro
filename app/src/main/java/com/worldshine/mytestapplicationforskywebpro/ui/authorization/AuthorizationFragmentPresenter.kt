@@ -1,9 +1,12 @@
 package com.worldshine.mytestapplicationforskywebpro.ui.authorization
 
 import android.annotation.SuppressLint
+import com.worldshine.mytestapplicationforskywebpro.R
 import com.worldshine.mytestapplicationforskywebpro.di.component.DaggerNetworkComponent
 import com.worldshine.mytestapplicationforskywebpro.di.module.NetworkModule
 import com.worldshine.mytestapplicationforskywebpro.network.Rest
+import com.worldshine.mytestapplicationforskywebpro.utils.isValidEmail
+import com.worldshine.mytestapplicationforskywebpro.utils.isValidPassword
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -22,7 +25,7 @@ class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>()
     }
 
     private val compositeDisposable = CompositeDisposable()
-    private val interceptor = getInterceptorForWeatherAppId(APP_ID_QUERY, APP_ID_VALUE)
+    private val interceptor = getInterceptorForAppIdWeather(APP_ID_QUERY, APP_ID_VALUE)
 
     @Inject
     lateinit var rest: Rest
@@ -31,7 +34,27 @@ class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>()
         injectDependency(interceptor)
     }
 
-    private fun getInterceptorForWeatherAppId(key: String, value: String): Interceptor {
+    fun checkEmailAndPasswordOnValid(email: String, password: String) {
+        viewState.clearErrorForEmailAndPasswordTextField()
+
+        if (email.isEmpty() || password.isEmpty() || !email.isValidEmail() || !password.isValidPassword()) {
+            if (email.isEmpty()) {
+                viewState.showErrorInTextInputLayoutEmail(R.string.email_empty)
+            } else if (!email.isValidEmail()) {
+                viewState.showErrorInTextInputLayoutEmail(R.string.email_error)
+            }
+            if (password.isEmpty()) {
+                viewState.showErrorInTextInputLayoutPassword(R.string.password_empty)
+            } else if (!password.isValidPassword()) {
+                viewState.showErrorInTextInputLayoutPassword(R.string.password_error)
+            }
+        } else if (email.isNotEmpty() && password.isNotEmpty() && email.isValidEmail() && password.isValidPassword()) {
+            getWeather()
+        }
+
+    }
+
+    private fun getInterceptorForAppIdWeather(key: String, value: String): Interceptor {
         return Interceptor.invoke { chain ->
             val original = chain.request()
             val originalHttpUrl = original.url
@@ -49,8 +72,8 @@ class AuthorizationFragmentPresenter : MvpPresenter<AuthorizationFragmentView>()
             DaggerNetworkComponent.builder()
                 .networkModule(
                     NetworkModule(
-                        mBaseUrl = WEATHER_BASE_URL,
-                        mInterceptor = interceptor
+                        baseUrl = WEATHER_BASE_URL,
+                        interceptor = interceptor
                     )
                 ).build()
 

@@ -1,6 +1,5 @@
 package com.worldshine.mytestapplicationforskywebpro.di.module
 
-import android.util.Log
 import com.worldshine.mytestapplicationforskywebpro.BuildConfig
 import com.worldshine.mytestapplicationforskywebpro.network.Rest
 import dagger.Module
@@ -15,9 +14,11 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule(
-    private val mBaseUrl: String,
-    private val mInterceptor: Interceptor? = null
+    baseUrl: String,
+    interceptor: Interceptor? = null
 ) {
+    private val _baseUrl = baseUrl
+    private val _interceptor = interceptor
 
     @Singleton
     @Provides
@@ -28,7 +29,7 @@ class NetworkModule(
     ): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(gsonConverterFactory)
-            .baseUrl(mBaseUrl)
+            .baseUrl(_baseUrl)
             .client(okHttpClient)
             .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .build()
@@ -74,8 +75,8 @@ class NetworkModule(
                 HttpLoggingInterceptor.Level.NONE
             }
         }
-        if (mInterceptor != null) {
-            interceptors.add(mInterceptor)
+        if (_interceptor != null) {
+            interceptors.add(_interceptor)
         }
         interceptors.add(loggingInterceptor)
         return interceptors

@@ -14,8 +14,11 @@ interface AuthorizationFragmentView : MvpView {
     )
 
     fun showError(error: String)
-
     fun showProgressbar(show: Boolean)
+    fun btnOnClick()
+    fun clearErrorForEmailAndPasswordTextField()
+    fun showErrorInTextInputLayoutEmail(error: Int)
+    fun showErrorInTextInputLayoutPassword(error: Int)
 
 
 }
